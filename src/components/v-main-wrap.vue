@@ -1,16 +1,21 @@
 <template>
-<div class="v-main-wrap">
+  <div class="v-main-wrap">
 
-<v-catalog/>
-  <v-cart/>
-</div>
+    <v-catalog/>
+    <v-cart v-if="this.$store.getters.CART.length"/>
+  </div>
 </template>
 
 <script>
 import VCatalog from "@/components/v-catalog";
 import VCart from "@/components/v-cart";
+
 export default {
-name: "v-main-wrap",
-  components: {VCart, VCatalog}
+  name: "v-main-wrap",
+  components: {VCart, VCatalog},
+  methods: {},
+  computed: {},
+
+
 }
 </script>

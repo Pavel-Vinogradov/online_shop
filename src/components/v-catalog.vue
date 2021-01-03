@@ -1,7 +1,7 @@
 <template>
   <div class="v-catalog__list">
     <v-catalog-item
-        @sendDataToParent="showArticle"
+        @addToCart="addToCart"
         v-for="item in getProducts"
         v-bind:key="item.article"
         v-bind:item="item"/>
@@ -15,22 +15,23 @@ export default {
   name: "v-catalog",
   components: {VCatalogItem},
   data() {
-    return {
+    return {}
+  },
+  computed: {
+    getProducts() {
+      return this.$store.state.products
+    },
+
+  },
+  methods: {
+    addToCart(data) {
+       this.$store.commit('setCart',data)
 
     }
   },
-  computed:{
-    getProducts(){
-      return this.$store.state.products
-    }
-  },
-  methods: {
-    showArticle(data) {
-           console.log(data)
-    },
-  },
   mounted() {
-    this.$store.dispatch('fetchCategories')
+    this.$store.dispatch('fetchCategories');
+
   }
 }
 </script>
