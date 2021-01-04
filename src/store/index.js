@@ -12,7 +12,8 @@ const store = new Vuex.Store({
     },
     mutations: {
         setProducts: (state, products) => (state.products = products),
-        setCart: (state, products) => (state.cart.push(products))
+        setCart: (state, products) => (state.cart.push(products)),
+        removeToCart:(state, index) =>(state.cart.splice(index,1))
     },
     actions: {
         async fetchCategories({commit}) {
@@ -22,6 +23,9 @@ const store = new Vuex.Store({
         },
         async add_to_cart({commit}, products) {
             commit('setCart', products)
+        },
+        async delFromCart({commit}, index) {
+            commit('removeToCart', index)
         }
     },
     getters: {

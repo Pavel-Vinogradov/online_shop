@@ -2,7 +2,8 @@
   <div class="v-main-wrap">
 
     <v-catalog/>
-    <v-cart v-if="this.$store.getters.CART.length"/>
+    <v-cart v-if="this.$store.getters.CART.length"
+            v-bind:cart_data="getItemCart"/>
   </div>
 </template>
 
@@ -14,7 +15,11 @@ export default {
   name: "v-main-wrap",
   components: {VCart, VCatalog},
   methods: {},
-  computed: {},
+  computed: {
+    getItemCart() {
+      return this.$store.state.cart
+    }
+  },
 
 
 }

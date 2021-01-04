@@ -3,12 +3,13 @@ $margin: 8px;
 $green-bg: #26ae68;
 $green-bg-hover: #31c375;
 $radius: 4px;
-.v-main-wrap{
+.v-main-wrap {
   display: flex;
   justify-content: center;
   align-items: center;
   max-width: 900px;
   margin: 0 auto;
+  flex-direction: column;
 }
 
 .btn {
@@ -19,6 +20,7 @@ $radius: 4px;
   border-radius: $radius;
   outline: none;
   cursor: pointer;
+
   &:hover {
     background: $green-bg-hover;
   }
@@ -30,6 +32,7 @@ $radius: 4px;
   padding: $padding*2;
   margin-bottom: $margin*2;
   text-align: center;
+
   &__image {
     width: 100px;
   }
@@ -42,6 +45,7 @@ $radius: 4px;
     justify-content: space-between;
     align-items: center;
   }
+
   &__link_to_cart {
     position: fixed;
     top: 80px;
@@ -51,25 +55,56 @@ $radius: 4px;
     background: #ffffff;
   }
 }
+
 .filters {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
+
 .range-slider {
   width: 200px;
   margin: auto 16px;
   text-align: center;
   position: relative;
 }
+
 .range-slider svg, .range-slider input[type=range] {
   position: absolute;
   left: 0;
   bottom: 0;
 }
+
 input[type=range]::-webkit-slider-thumb {
   z-index: 2;
   position: relative;
   top: 2px;
   margin-top: -7px;
+}
+
+.v-cart-item {
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 0 8px 0 #e0e0e0;
+  padding: $padding*2;
+  margin-bottom: $margin*2;
+
+  &__image {
+    max-width: 50px;
+  }
+
+  .quantity__btn {
+    cursor: pointer;
+  }
+
+  .quantity__tools {
+    user-select: none;
+  }
+}
+
+.v-cart
+{
+  width: 100%;
 }
