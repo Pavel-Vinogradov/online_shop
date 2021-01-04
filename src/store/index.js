@@ -12,8 +12,24 @@ const store = new Vuex.Store({
     },
     mutations: {
         setProducts: (state, products) => (state.products = products),
-        setCart: (state, products) => (state.cart.push(products)),
-        removeToCart:(state, index) =>(state.cart.splice(index,1))
+        setCart: (state, products) => {
+            if (state.cart.length) {
+                let isProductExists = false;
+                state.cart.map(function (item) {
+                    if (item.article === products.article) {
+                        isProductExists = true;
+                        item.quantity++
+                    }
+                })
+                if (!isProductExists) {
+                    state.cart.push(products)
+                }
+            } else {
+                state.cart.push(products)
+            }
+        },
+
+        removeToCart: (state, index) => (state.cart.splice(index, 1))
     },
     actions: {
         async fetchCategories({commit}) {
