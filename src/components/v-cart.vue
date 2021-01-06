@@ -9,9 +9,14 @@
     <v-cart-item
         v-for="(item,index) in cart_data"
         @delFromCart="delFromCart(index)"
+        @increment="increment(index)"
+        @decrement="decrement(index)"
         v-bind:key="item.article"
         v-bind:cart-item-data="item"/>
-
+    <div class="v-cart__total">
+      <p>Total</p>
+      <p> {{ cartTotalCost }} Р</p>
+    </div>
   </div>
 </template>
 
@@ -25,9 +30,34 @@ export default {
   methods: {
     delFromCart(index) {
       this.$store.commit('removeToCart', index)
+    },
+    increment(index) {
+      this.$store.commit('increment', index)
+    },
+    decrement(index) {
+      this.$store.commit('decrement', index)
+    },
+  },
+  computed: {
+    cartTotalCost() {
+      let result = []
+      if (this.cart_data.length) {
+        for (let item of this.cart_data) {
+          result.push(item.price * item.quantity)
+          result = result.reduce(function (sum, el) {
+            return sum + el
+          })
+        }
+      }
+      if (result.length == 0) {
+        result = 0
+      }
+      return result;
+
 
     }
-  },
+  }
+
 
 }
 </script>

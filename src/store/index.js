@@ -29,7 +29,15 @@ const store = new Vuex.Store({
             }
         },
 
-        removeToCart: (state, index) => (state.cart.splice(index, 1))
+        removeToCart: (state, index) => (state.cart.splice(index, 1)),
+        increment: (state, index) => {
+            state.cart[index].quantity++
+        },
+        decrement: (state, index) => {
+            if (state.cart[index].quantity > 1) {
+                state.cart[index].quantity--
+            }
+        }
     },
     actions: {
         async fetchCategories({commit}) {
@@ -37,12 +45,18 @@ const store = new Vuex.Store({
                 commit('setProducts', response.data)
             })
         },
-        async add_to_cart({commit}, products) {
+        add_to_cart({commit}, products) {
             commit('setCart', products)
         },
-        async delFromCart({commit}, index) {
+        delFromCart({commit}, index) {
             commit('removeToCart', index)
-        }
+        },
+        incrementCart({commit}, index) {
+            commit('increment', index)
+        },
+        decrementCart({commit}, index) {
+            commit('decrement', index)
+        },
     },
     getters: {
         PRODUCTS: (state) => {
