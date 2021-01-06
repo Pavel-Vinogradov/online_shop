@@ -1,11 +1,19 @@
 <template>
-  <div class="v-catalog__list">
-    <v-catalog-item
-        @addToCart="addToCart"
-        v-for="item in getProducts"
-        v-bind:key="item.article"
-        v-bind:item="item"/>
+  <div class="v-catalog">
+ <router-link :to="{name:'cart' ,params:{cart_data:getCart}}">
+   <div class="v-catalog__link_to_cart">Cart: {{ getCart.length }}</div>
+ </router-link>
+
+    <h1>Catalog</h1>
+    <div class="v-catalog__list">
+      <v-catalog-item
+          @addToCart="addToCart"
+          v-for="item in getProducts"
+          v-bind:key="item.article"
+          v-bind:item="item"/>
+    </div>
   </div>
+
 </template>
 
 <script>
@@ -21,11 +29,13 @@ export default {
     getProducts() {
       return this.$store.state.products
     },
-
+    getCart() {
+      return this.$store.getters.CART
+    },
   },
   methods: {
     addToCart(data) {
-       this.$store.commit('setCart',data)
+      this.$store.commit('setCart', data)
 
     }
   },
