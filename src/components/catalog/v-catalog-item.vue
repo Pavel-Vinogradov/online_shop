@@ -1,6 +1,6 @@
 <template>
   <div class="v-catalog-item">
-    <img :src="require('../assets/img/'+item.image)"
+    <img :src="require('../../assets/img/'+item.image)"
          :alt="item.image">
     <p> {{ item.name }}</p>
     <p> Price: {{ item.price }} р</p>

@@ -17,7 +17,7 @@
 </template>
 
 <script>
-import VCatalogItem from "@/components/v-catalog-item";
+import VCatalogItem from "@/components/catalog/v-catalog-item";
 
 export default {
   name: "v-catalog",

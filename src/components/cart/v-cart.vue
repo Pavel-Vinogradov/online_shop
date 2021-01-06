@@ -21,7 +21,7 @@
 </template>
 
 <script>
-import VCartItem from "@/components/v-cart-item";
+import VCartItem from "@/components/cart/v-cart-item";
 
 export default {
   name: "v-cart",
@@ -44,17 +44,14 @@ export default {
       if (this.cart_data.length) {
         for (let item of this.cart_data) {
           result.push(item.price * item.quantity)
-          result = result.reduce(function (sum, el) {
-            return sum + el
-          })
         }
+        result = result.reduce(function (sum, el) {
+          return sum + el;
+        })
+        return result;
+      } else {
+        return 0
       }
-      if (result.length == 0) {
-        result = 0
-      }
-      return result;
-
-
     }
   }
 

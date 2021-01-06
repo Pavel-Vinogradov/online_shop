@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import vCatalog from '../components/v-catalog'
-import vCart from '../components/v-cart'
+import vCatalog from '../components/catalog/v-catalog'
+import vCart from '../components/cart/v-cart'
 
 Vue.use(VueRouter)
 
