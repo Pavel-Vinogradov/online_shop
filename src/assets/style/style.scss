@@ -127,3 +127,30 @@ input[type=range]::-webkit-slider-thumb {
   }
 
 }
+
+.v-select {
+  position: relative;
+  width: 200px;
+  cursor: pointer;
+  text-align: left;
+}
+.title {
+  border: solid 1px #aeaeae;
+  padding: 8px;
+  width: 100%;
+}
+.v-select p {
+  margin: 0;
+}
+.options {
+  border: solid 1px #aeaeae;
+  background: #ffffff;
+  position: absolute;
+  top: 30px;
+  left: 0;
+  width: 100%;
+  padding: 8px;
+}
+.options p:hover {
+  background: #e7e7e7;
+}

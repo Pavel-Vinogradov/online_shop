@@ -19,10 +19,8 @@
     </div>
   </div>
 </template>
-
 <script>
 import VCartItem from "@/components/cart/v-cart-item";
-
 export default {
   name: "v-cart",
   components: {VCartItem},
@@ -54,8 +52,6 @@ export default {
       }
     }
   }
-
-
 }
 </script>
 
