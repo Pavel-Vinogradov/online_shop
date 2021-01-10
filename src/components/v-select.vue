@@ -5,7 +5,7 @@
     <div class="options"
          v-if="areOptionsVisible || isExpanded">
       <p v-bind:key="item.value"
-         @click="selectOption(options)"
+         @click="selectOption(item)"
          v-for="item in options">{{ item.name }}</p>
     </div>
   </div>
@@ -23,8 +23,8 @@ export default {
   },
   computed: {},
   methods: {
-    selectOption(option) {
-      this.$emit('selectOption', option)
+    selectOption(item) {
+      this.$emit('selectOption', item)
       this.areOptionsVisible = false;
 
     },
