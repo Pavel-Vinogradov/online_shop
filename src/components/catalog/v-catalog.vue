@@ -10,7 +10,7 @@
         :selected="selected"
         @selectOption="sortByCategories"
     />
-    {{ selected }}
+
     <div class="v-catalog__list">
       <v-catalog-item
           @addToCart="addToCart"
@@ -52,7 +52,7 @@ export default {
     },
     filteredProducts() {
       if (this.sortedProducts.length) {
-         return  this.sortedProducts
+        return this.sortedProducts;
       } else {
         return this.$store.getters.PRODUCTS
 
@@ -64,6 +64,7 @@ export default {
       this.$store.commit('setCart', data)
     },
     sortByCategories(category) {
+      this.sortedProducts=[]
       let vm = this;
       let temp = this.$store.getters.PRODUCTS;
       temp.map(function (item) {
